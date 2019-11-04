@@ -27,11 +27,12 @@ var firebaseConfig = {
 
  $("#add-train-btn").on ("click", function(event){
      event.preventDefault();
+     
      name = $("#name-input").val().trim();
      destination = $("#destination-input").val().trim();
-     time = $("#time-input").val().trim();
      frequency = $("#frequency-input").val().trim();
-
+     time = $("#time-input").val().trim();
+     
      database.ref().push({
          name:name,
          destination:destination,
@@ -40,10 +41,8 @@ var firebaseConfig = {
      });
  });
 
- //var count = 0;
-
+ 
  database.ref().on("child_added", function(childSnapshot){
-     //count++
 
     var minsAway = 0;
     
@@ -53,13 +52,12 @@ var firebaseConfig = {
     console.log(childSnapshot.val().frequency);
     console.log(childSnapshot.val().minAway);
     
-    var minsAway = 0;
   
     var tableData = $("<tr>")
     tableData.append($("<td>").text(childSnapshot.val().name));
     tableData.append($("<td>").text(childSnapshot.val().destination));
-    tableData.append($("<td>").text(childSnapshot.val().time));
     tableData.append($("<td>").text(childSnapshot.val().frequency));
+    tableData.append($("<td>").text(childSnapshot.val().time));
     tableData.append($("<td>").text(minsAway));
 
     $("#data-display").append(tableData);
