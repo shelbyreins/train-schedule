@@ -40,10 +40,10 @@ var firebaseConfig = {
      });
  });
 
- var count = 0;
+ //var count = 0;
 
  database.ref().on("child_added", function(childSnapshot){
-     count++
+     //count++
 
     var minsAway = 0;
     
