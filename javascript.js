@@ -23,8 +23,8 @@ var firebaseConfig = {
   var name = "";
   var destination = "";
   var time = "";
-  var frequency = "";
-  var minsAway = "";
+  var frequency = 0;
+
 
  $("#add-train-btn").on ("click", function(event){
      event.preventDefault();
@@ -63,7 +63,7 @@ var count = 0;
     tableData.append($("<td>").text(childSnapshot.val().frequency));
     tableData.append($("<td>").text(childSnapshot.val().time));
     tableData.append($("<td>").text(minsAway));
-    // updateTime();
+    updateTime();
 
     $("#data-display").append(tableData);
 
@@ -71,12 +71,18 @@ var count = 0;
      console.log("Errors handled: " + errorObject.code);
  })
 
-// var updateTime = function(){
-//     var firstTimeConverted = moment(time, "HH:mm").subtract(1, "years");
-//     //var currentTime= moment();
-//     var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-//     var tRemainder = diffTime % frequency;
-//     var tMinutesTillTrain = frequency - tRemainder;
-//     var nextTrain = moment().add(tMinutesTillTrain, "minutes");
-//     return nextTrain
-// }
+var updateTime = function(){
+    var firstTimeConverted = moment(time, "HH:mm").subtract(1, "years");
+    console.log(firstTimeConverted);
+    var currentTime= moment();
+    console.log( moment(currentTime).format("hh:mm"))
+    var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+    console.log(diffTime);
+    var tRemainder = diffTime % frequency;
+    console.log(tRemainder);
+    var tMinutesTillTrain = frequency - tRemainder;
+    console.log(tMinutesTillTrain);
+    var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+    console.log(nextTrain)
+    return nextTrain
+}
