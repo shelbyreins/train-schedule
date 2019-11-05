@@ -24,6 +24,7 @@ var firebaseConfig = {
   var destination = "";
   var time = "";
   var frequency = "";
+  var minsAway = "";
 
  $("#add-train-btn").on ("click", function(event){
      event.preventDefault();
@@ -38,19 +39,22 @@ var firebaseConfig = {
          destination:destination,
          time:time,
          frequency:frequency,
+         minsAway:minsAway,
      });
  });
 
- 
- database.ref().on("child_added", function(childSnapshot){
+var count = 0;
 
+ database.ref().on("child_added", function(childSnapshot){
+    count ++;
     var minsAway = 0;
+    // var time = 0;
     
     console.log(childSnapshot.val().name);
     console.log(childSnapshot.val().destination);
     console.log(childSnapshot.val().time);
     console.log(childSnapshot.val().frequency);
-    console.log(childSnapshot.val().minAway);
+    console.log(childSnapshot.val().minsAway);
     
   
     var tableData = $("<tr>")
@@ -59,6 +63,7 @@ var firebaseConfig = {
     tableData.append($("<td>").text(childSnapshot.val().frequency));
     tableData.append($("<td>").text(childSnapshot.val().time));
     tableData.append($("<td>").text(minsAway));
+    // updateTime();
 
     $("#data-display").append(tableData);
 
@@ -66,5 +71,12 @@ var firebaseConfig = {
      console.log("Errors handled: " + errorObject.code);
  })
 
-
- 
+// var updateTime = function(){
+//     var firstTimeConverted = moment(time, "HH:mm").subtract(1, "years");
+//     //var currentTime= moment();
+//     var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+//     var tRemainder = diffTime % frequency;
+//     var tMinutesTillTrain = frequency - tRemainder;
+//     var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+//     return nextTrain
+// }
