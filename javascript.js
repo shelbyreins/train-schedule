@@ -82,18 +82,3 @@ var count = 0;
      console.log("Errors handled: " + errorObject.code);
  })
 
-// var updateTime = function(){
-//     var minsAway;
-
-//     var firstTimeConverted = moment(childSnapshot.val().time, "HH:mm").subtract(1, "years");
-//     console.log(firstTimeConverted);
-//     var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-//     console.log(diffTime);
-//     var remainder = diffTime % childSnapshot.val().frequency;
-//     console.log(tRemainder);
-//     var minsAway = childSnapshot.val().frequency - remainder;
-//     console.log(minsAway);
-//     var nextTrain = moment().add(minsAway, "minutes");
-//     nextTrain = moment(nextTrain).format("HH:mm");
-//     console.log(nextTrain)
-// }
