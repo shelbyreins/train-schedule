@@ -58,7 +58,7 @@ var count = 0;
     var minsAway = childSnapshot.val().frequency - remainder;
     console.log(minsAway);
     var nextTrain = moment().add(minsAway, "minutes");
-    nextTrain = moment(nextTrain).format("HH:mm");
+    nextTrain = moment(nextTrain).format("hh:mm A");
     console.log(nextTrain)
 
 
@@ -67,7 +67,6 @@ var count = 0;
     console.log(childSnapshot.val().destination);
     console.log(childSnapshot.val().time);
     console.log(childSnapshot.val().frequency);
-    console.log(childSnapshot.val().minsAway);
     
     var tableData = $("<tr>")
     tableData.append($("<td>").text(childSnapshot.val().name));
