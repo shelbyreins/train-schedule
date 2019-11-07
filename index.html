@@ -19,10 +19,10 @@
 </head>
 ​
 
-<body>
-    <div class = "container wrapper">
+<body class= "mt-0">
+    <div class = "container wrapper" >
          
-        <div class="jumbotron" style="background-color: rgb(14, 55, 116); color: white;border-radius: 0 0 50% 50%; ">
+        <div class="jumbotron" style="background-color: rgb(14, 55, 116); color: white;border-radius: 0 0 50% 50%;">
             <div class="container-fluid header"> 
                 <h1 class="text-center" id = "title">Train Scheduler</h1>
                 <!-- <h3 class="text-center" id = "subtitle">Choo Choo Chee Chee</h3> -->
@@ -35,7 +35,7 @@
                 <div class="card mb-4">
                     <div class="card-header" style="background-color: rgb(14, 55, 116); color: white;"> Current Train Schedule </div>
                     <div class="card-body">
-                        <table class="table table-hover table-sm ">
+                        <table class="table table-hover table-sm" id="current-trains">
                             <thead>
                                 <tr>
                                     <th scope="col">Train Name</th>
@@ -62,19 +62,19 @@
                         <div class="form">
                             <div class="form-group">
                                 <label for="name-input">Train Name</label>
-                                <input class="form-control" id="name-input" type= "text">
+                                <input class="form-control" id="name-input" type= "text" placeholder="Enter a Train">
                             </div>
                             <div class="form-group">
                                 <label for="destination-input">Destination</label>
-                                <input class="form-control" id="destination-input" type= "text">
+                                <input class="form-control" id="destination-input" type= "text" placeholder="Enter a Destination">
                             </div>
                             <div class="form-group">
-                                <label for="time-input">First Train Time (HH:mm- military time)</label>
-                                <input class="form-control" id="time-input"  type="number">
+                                <label for="time-input">First Train Time (HHmm- military time)</label>
+                                <input class="form-control" id="time-input"  type="number" placeholder="eg. 1600">
                             </div>
                             <div class="form-group">
                                 <label for="frequency-input">Frequency (min)</label>
-                                <input class="form-control" id="frequency-input"  type= "number">
+                                <input class="form-control" id="frequency-input"  type= "number" placeholder="eg. 45">
                             </div>
                         </div>
                         <button class="btn btn-primary float-right" type="submit" id = "add-train-btn">Submit</button>
