@@ -1,6 +1,7 @@
+
 body{
     background: #cccc; 
-    padding-top:0
+   
 }
 
 .header{
@@ -13,8 +14,19 @@ body{
 }
 
 
+
 #title{
     font-family: 'Cinzel', serif;
     font-weight: bold;
     font-size: 3em;
+}
+
+#current-trains td, th{
+    text-align: center;
+    
+}
+
+#add-train-btn{
+    background-color: rgba(30, 64, 114, 0.9); 
+    color: white;
 }
