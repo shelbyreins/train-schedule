@@ -1,6 +1,17 @@
 body{
-    background-color: #cccc; 
+    background: #cccc; 
+    padding-top:0
 }
+
+.header{
+    padding-top:0;
+}
+
+.wrapper{
+    background: #ffffff;
+    border-radius: 0;
+}
+
 
 #title{
     font-family: 'Cinzel', serif;
