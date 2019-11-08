@@ -29,6 +29,7 @@ var firebaseConfig = {
  $("#add-train-btn").on ("click", function(event){
      event.preventDefault();
      
+     
      name = $("#name-input").val().trim();
      destination = $("#destination-input").val().trim();
      frequency = $("#frequency-input").val().trim();
@@ -50,16 +51,16 @@ var count = 0;
     var minsAway = 0;
 
     var firstTimeConverted = moment(childSnapshot.val().time, "HH:mm").subtract(1, "years");
-    console.log(firstTimeConverted);
+    // console.log(firstTimeConverted);
     var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-    console.log(diffTime);
+    // console.log(diffTime);
     var remainder = diffTime % childSnapshot.val().frequency;
-    console.log(remainder);
+    // console.log(remainder);
     var minsAway = childSnapshot.val().frequency - remainder;
-    console.log(minsAway);
+    // console.log(minsAway);
     var nextTrain = moment().add(minsAway, "minutes");
     nextTrain = moment(nextTrain).format("hh:mm A");
-    console.log(nextTrain)
+    // console.log(nextTrain)
 
 
 
