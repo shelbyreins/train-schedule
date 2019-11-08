@@ -24,11 +24,12 @@ var firebaseConfig = {
   var destination = "";
   var time = "";
   var frequency = 0;
-
+  var validity = $(".form-control");
 
  $("#add-train-btn").on ("click", function(event){
      event.preventDefault();
-     
+    for (var i = 0; i < validity.length; i++)
+     if(validity[i].reportValidity()){
      
      name = $("#name-input").val().trim();
      destination = $("#destination-input").val().trim();
@@ -42,7 +43,9 @@ var firebaseConfig = {
          frequency:frequency,
        
      });
+    }
  });
+
 
 var count = 0;
 
