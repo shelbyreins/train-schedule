@@ -1,10 +1,3 @@
-// Build a table and form in html
-// Link firebase in JS
-// Initalize firebase
-// create var to reference the database
-
-// generate the table in js
-
 var firebaseConfig = {
     apiKey: "AIzaSyDu7eC8tWMBck2aa2PhXLvHsNiqwNbb9U4",
     authDomain: "train-schedule-9e9ef.firebaseapp.com",
@@ -19,22 +12,16 @@ var firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
 
   var database = firebase.database();
-
-  var name = "";
-  var destination = "";
-  var time = "";
-  var frequency = 0;
-  var validity = $(".form-control");
-
+ 
  $("#add-train-btn").on ("click", function(event){
      event.preventDefault();
-    for (var i = 0; i < validity.length; i++)
-     if(validity[i].reportValidity()){
+     if($(".form-control")[0].reportValidity()){
      
-     name = $("#name-input").val().trim();
-     destination = $("#destination-input").val().trim();
-     frequency = $("#frequency-input").val().trim();
-     time = $("#time-input").val().trim();
+     var name = $("#name-input").val().trim();
+     var destination = $("#destination-input").val().trim();
+     var frequency = $("#frequency-input").val().trim();
+     var time = $("#time-input").val().trim();
+
      
      database.ref().push({
          name:name,
@@ -43,7 +30,13 @@ var firebaseConfig = {
          frequency:frequency,
        
      });
-    }
+    
+    $("#name-input").val("");
+    $("#destination-input").val("");
+    $("#frequency-input").val("");
+    $("#time-input").val("");
+    };
+     
  });
 
 
@@ -54,18 +47,11 @@ var count = 0;
     var minsAway = 0;
 
     var firstTimeConverted = moment(childSnapshot.val().time, "HH:mm").subtract(1, "years");
-    // console.log(firstTimeConverted);
     var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
-    // console.log(diffTime);
     var remainder = diffTime % childSnapshot.val().frequency;
-    // console.log(remainder);
     var minsAway = childSnapshot.val().frequency - remainder;
-    // console.log(minsAway);
     var nextTrain = moment().add(minsAway, "minutes");
     nextTrain = moment(nextTrain).format("hh:mm A");
-    // console.log(nextTrain)
-
-
 
     console.log(childSnapshot.val().name);
     console.log(childSnapshot.val().destination);
@@ -78,7 +64,6 @@ var count = 0;
     tableData.append($("<td>").text(childSnapshot.val().frequency));
     tableData.append($("<td>").text(nextTrain));
     tableData.append($("<td>").text(minsAway));
-    
 
     $("#data-display").append(tableData);
 
