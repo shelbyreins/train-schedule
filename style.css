@@ -11,8 +11,15 @@ body{
 .wrapper{
     background: #ffffff;
     border-radius: 0;
+    padding: 0 0 0 0 ;
+    margin-bottom: 20px;
+    margin-top: 0px !important;
 }
 
+.form-control:focus{
+    border-color: grey
+    
+}
 
 
 #title{
@@ -29,4 +36,5 @@ body{
 #add-train-btn{
     background-color: rgba(30, 64, 114, 0.9); 
     color: white;
+    border: none;
 }
