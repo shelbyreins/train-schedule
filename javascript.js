@@ -1,3 +1,4 @@
+// Intialize Firebase
 var firebaseConfig = {
     apiKey: "AIzaSyDu7eC8tWMBck2aa2PhXLvHsNiqwNbb9U4",
     authDomain: "train-schedule-9e9ef.firebaseapp.com",
@@ -13,16 +14,20 @@ var firebaseConfig = {
 
   var database = firebase.database();
  
- $("#add-train-btn").on ("click", function(event){
+  // On click button for adding a train
+ $("#add-train-btn").on("click", function(event){
+    //Prevents page from reloading
      event.preventDefault();
+//Validates that all inputs are in before submitting
      if($("#validation")[0].reportValidity()){
      
+//Grabs user input values
      var name = $("#name-input").val().trim();
      var destination = $("#destination-input").val().trim();
      var frequency = $("#frequency-input").val().trim();
      var time = $("#time-input").val().trim();
 
-     
+// Uploads emoloyee data to the Firebase database
      database.ref().push({
          name:name,
          destination:destination,
@@ -30,11 +35,11 @@ var firebaseConfig = {
          frequency:frequency,
        
      });
-    
-    $("#name-input").val("");
-    $("#destination-input").val("");
-    $("#frequency-input").val("");
-    $("#time-input").val("");
+// Clears the input after submitting the form
+        $("#name-input").val("");
+        $("#destination-input").val("");
+        $("#frequency-input").val("");
+        $("#time-input").val("");
     };
      
  });
@@ -46,6 +51,7 @@ var count = 0;
     count ++;
     var minsAway = 0;
 
+//moment.js
     var firstTimeConverted = moment(childSnapshot.val().time, "HH:mm").subtract(1, "years");
     var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
     var remainder = diffTime % childSnapshot.val().frequency;
@@ -58,6 +64,7 @@ var count = 0;
     console.log(childSnapshot.val().time);
     console.log(childSnapshot.val().frequency);
     
+//Creates a new row with data 
     var tableData = $("<tr>")
     tableData.append($("<td>").text(childSnapshot.val().name));
     tableData.append($("<td>").text(childSnapshot.val().destination));
@@ -65,6 +72,7 @@ var count = 0;
     tableData.append($("<td>").text(nextTrain));
     tableData.append($("<td>").text(minsAway));
 
+ //Append row to the table in HTML
     $("#data-display").append(tableData);
 
  },function(errorObject){

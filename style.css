@@ -1,9 +1,12 @@
 
-body{
+body {
     background: #cccc; 
     padding-top: 0px;
 }
 
+.jumbrotron{
+    padding: 0px;
+}
 
 .wrapper{
     background: #ffffff;
@@ -12,7 +15,7 @@ body{
 }
 
 .form-control:focus{
-    border-color: grey
+    border-color: grey;
     
 }
 
