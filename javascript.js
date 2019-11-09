@@ -15,7 +15,7 @@ var firebaseConfig = {
  
  $("#add-train-btn").on ("click", function(event){
      event.preventDefault();
-     if($(".form-control")[0].reportValidity()){
+     if($("#validation")[0].reportValidity()){
      
      var name = $("#name-input").val().trim();
      var destination = $("#destination-input").val().trim();
