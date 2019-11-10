@@ -17,7 +17,7 @@ https://shelbyreins.github.io/train-schedule/
     - Submit 
 - The trains arrivial time and minutes away is updated using real time
 
-    <img src = "" width="600px"/>
+    <img src = "assests/images/trainScheduleGif.gif" width="600px"/>
 
 ### Game Design Notes
 
